@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 9193084700851748454}
   - component: {fileID: 3451172223249898427}
   - component: {fileID: 8062559346177237395}
-  - component: {fileID: 2648004285903064325}
+  - component: {fileID: 4717829547127549061}
   m_Layer: 0
   m_Name: MainCube
   m_TagString: Bonus
@@ -707,7 +707,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 1
---- !u!114 &2648004285903064325
+--- !u!114 &4717829547127549061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -716,6 +716,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3007733958772939888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 071e34cd5a7c4a0418f1e59832e623b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 5205f72ddedcb6a409b7ff3e1106d751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
