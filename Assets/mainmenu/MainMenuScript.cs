@@ -13,6 +13,11 @@ public class MainMenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void ExitButton()
     {
         Application.Quit();

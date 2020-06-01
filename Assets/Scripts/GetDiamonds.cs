@@ -12,7 +12,7 @@ public class GetDiamonds : MonoBehaviour
     public GameObject canvas;
     public GameObject Diamond;
     public Text scoreText;
-    private int score;
+    public int score;
 
     void CreateDiamond()
     {

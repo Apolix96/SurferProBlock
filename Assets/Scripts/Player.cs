@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.VFX;
 
 public class Player : MonoBehaviour
@@ -11,6 +12,10 @@ public class Player : MonoBehaviour
 
     private float speed = 0.1f;
     private float Pspeed = 16f;
+    private float hyi;
+    private int DiamondsCount;
+
+    public GameObject FinishPanel;
 
     private GameObject Sphere;
     private GameObject player;
@@ -35,6 +40,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject[] Diamonds = GameObject.FindGameObjectsWithTag("Diamond");
+      
+        DiamondsCount = Diamonds.Length;
         player = GameObject.Find("Player");
         Sphere = GameObject.Find("Sphere");
         MainCube = GameObject.Find("MainCube");
@@ -62,16 +70,21 @@ public class Player : MonoBehaviour
 
             }
 
-            
-            
             if (player.transform.childCount <5)
             {
                 Camera.main.transform.parent = null;
                 Destroy(gameObject);
+                SceneManager.LoadScene("SampleScene");
             }
             movementPlayer();
-
             MovePlayerStraight();
+        }
+        else
+        {
+            
+            player.transform.rotation = Quaternion.Euler(player.transform.rotation.x, hyi, player.transform.rotation.z);
+            hyi -= 1;
+
         }
        
     }
@@ -103,14 +116,30 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == tagTrigger)
         {
             finish = true;
-            SceneManager.LoadScene("mainmenu/MainMenu");
+            FinishPanel.SetActive(true);
+            var Diamondd=GetComponent<GetDiamonds>();
+            if(Diamondd.score <=DiamondsCount * 50 / 100)
+            {
+                FinishPanel.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else if(Diamondd.score  > DiamondsCount * 50 / 100)
+            {
+                FinishPanel.transform.GetChild(0).gameObject.SetActive(true);
+                FinishPanel.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else if(Diamondd.score > DiamondsCount * 85 / 100)
+            {
+                FinishPanel.transform.GetChild(0).gameObject.SetActive(true);
+                FinishPanel.transform.GetChild(1).gameObject.SetActive(true);
+                FinishPanel.transform.GetChild(2).gameObject.SetActive(true);
+            }
+            
+            //SceneManager.LoadScene("mainmenu/MainMenu");
         }
         var groundTrigger = "Ground";
         if(other.gameObject.tag == groundTrigger)
         {
-            //finish = true;
             SceneManager.LoadScene("SampleScene");
-            //Destroy(gameObject);
         }
         if (other.gameObject.name == "TurnLeft")
         {
