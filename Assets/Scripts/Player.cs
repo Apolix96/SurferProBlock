@@ -11,28 +11,13 @@ public class Player : MonoBehaviour
     private float speed = 0.1f;
     private float Pspeed = 16f;
 
-    private bool turn = false;
-
     private GameObject Sphere;
     private GameObject player;
     private GameObject MainCube;
     private GameObject Bonus;
     private BoxCollider BoxCollider;
 
-
-    private readonly float speed1 = 15.1f;
-    private bool move = false;
-    private Vector3 target;
-    private Vector2 startPos;
-
-
-
-
-    private Vector3 screenPoint;
-    private Vector3 offset;
-    Vector3 startDirection;
-
-
+  
     public bool finish = false;
     private void movementPlayer()
     {
@@ -72,7 +57,9 @@ public class Player : MonoBehaviour
 
             }
 
-            if (player.transform.childCount == 4)
+            
+            
+            if (player.transform.childCount <5)
             {
                 Camera.main.transform.parent = null;
                 Destroy(gameObject);
@@ -95,7 +82,7 @@ public class Player : MonoBehaviour
             Bonus = collisin.gameObject;
             Bonus.transform.parent = player.transform;
             Bonus.transform.position = Sphere.transform.position;
-            Sphere.transform.position = new Vector3(Sphere.transform.position.x, Sphere.transform.position.y+ Bonus.transform.localScale.y, Sphere.transform.position.z);
+            //Sphere.transform.position = new Vector3(Sphere.transform.position.x, Sphere.transform.position.y, Sphere.transform.position.z);
         }
     }
     private void OnTriggerEnter(Collider other)

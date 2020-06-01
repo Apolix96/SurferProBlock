@@ -30,8 +30,9 @@ public class GetDiamonds : MonoBehaviour
             
             Destroy(other.gameObject);
             score++;
-            StartScore();
-            
+            ChangeTime();
+
+
 
 
         }
