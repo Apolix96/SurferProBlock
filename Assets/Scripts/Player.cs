@@ -34,12 +34,11 @@ public class Player : MonoBehaviour
 
 
     public bool finish = false;
-    private void MovementAccelerationPlayer()
+    private void movementPlayer()
     {
-        Vector3 dir = new Vector3(-Input.acceleration.y, 0, Input.acceleration.x);
-        dir.Normalize();
-        transform.Translate(dir * 10f * Time.deltaTime);
-
+        var aMovement = Input.GetAxis("Horizontal");
+        var dMovement = Input.GetAxis("Vertical");
+        transform.Translate(aMovement * speed, 0, dMovement * speed);
     }
 
 
@@ -72,11 +71,14 @@ public class Player : MonoBehaviour
                 }
 
             }
-            /*if (player.transform.childCount == 4)
+
+            if (player.transform.childCount == 4)
             {
                 Camera.main.transform.parent = null;
                 Destroy(gameObject);
-            }*/
+            }
+            movementPlayer();
+
             MovePlayerStraight();
         }
        
@@ -93,7 +95,7 @@ public class Player : MonoBehaviour
             Bonus = collisin.gameObject;
             Bonus.transform.parent = player.transform;
             Bonus.transform.position = Sphere.transform.position;
-            Sphere.transform.position = new Vector3(Sphere.transform.position.x, Sphere.transform.position.y+ Bonus.transform.localScale.y+1, Sphere.transform.position.z);
+            Sphere.transform.position = new Vector3(Sphere.transform.position.x, Sphere.transform.position.y+ Bonus.transform.localScale.y, Sphere.transform.position.z);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -102,13 +104,14 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == tagTrigger)
         {
             finish = true;
-            Destroy(other.gameObject);
+            SceneManager.LoadScene("mainmenu/MainMenu");
         }
         var groundTrigger = "Ground";
         if(other.gameObject.tag == groundTrigger)
         {
-            finish = true;
-            Destroy(gameObject);
+            //finish = true;
+            SceneManager.LoadScene("SampleScene");
+            //Destroy(gameObject);
         }
         if (other.gameObject.name == "TurnLeft")
         {
