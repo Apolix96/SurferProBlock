@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Player : MonoBehaviour
     private GameObject MainCube;
     private GameObject Bonus;
     private BoxCollider BoxCollider;
+
+    [SerializeField] GameObject fireworks;
+
+
 
   
     public bool finish = false;
@@ -88,6 +93,13 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var tagTrigger = "Finish";
+        var tagTriggerFireForks = "Winner";
+
+        if(other.gameObject.tag == tagTriggerFireForks)
+        {
+            fireworks.SetActive(true);
+            
+        }
         if (other.gameObject.tag == tagTrigger)
         {
             finish = true;
