@@ -1906,6 +1906,18 @@ MonoBehaviour:
   Diamond: {fileID: 7792380595730097856, guid: 51130cf823fe8ef428cdb0d47a40198d, type: 3}
   scoreText: {fileID: 441351433}
   score: 0
+--- !u!114 &184559688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184559686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d9fa0601a346d44b25f3c158cc4cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &203987459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 108507113624698413, guid: eebb56c82efbd8d4bb0eb6bd925a0e9d,

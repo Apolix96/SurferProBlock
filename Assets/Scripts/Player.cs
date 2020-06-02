@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     {
         if (!finish)
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
+           /* if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
             {
                 Vector3 touchPosition = Input.GetTouch(0).position;
                 double halfScreen = Screen.width / 2.0;
@@ -48,12 +48,12 @@ public class Player : MonoBehaviour
                     player.transform.Translate(Vector3.right * 5 * Time.deltaTime);
                 }
             }
-
+            MovementPlayer();*/
             if (player.transform.childCount <5)
             {
                 SceneManager.LoadScene("SampleScene");
             }
-            MovementPlayer();
+            
             MovePlayerStraight();
         }      
     }
