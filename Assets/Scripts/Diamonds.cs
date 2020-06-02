@@ -14,18 +14,15 @@ public class Diamonds : MonoBehaviour
     void Start()
     {
         m_RectTransform = GetComponent<RectTransform>();
-        //Initiate the x and y positions
-        
+        //Initiate the x and y positions   
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Diamond.rectTransform.anchoredPosition == m_RectTransform.anchoredPosition)
         {
             Destroy(gameObject,.7f);
         }
-        
     }
 }

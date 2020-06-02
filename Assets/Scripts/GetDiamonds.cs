@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-
-
 public class GetDiamonds : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -24,17 +22,10 @@ public class GetDiamonds : MonoBehaviour
     {
         if (other.gameObject.tag == "Diamond")
         {
-
             CreateDiamond();
-
-            
             Destroy(other.gameObject);
             score++;
             ChangeTime();
-
-
-
-
         }
     }
     public void StartScore()
@@ -49,9 +40,7 @@ public class GetDiamonds : MonoBehaviour
     }
     void ChangeTime()
     {
-       
         scoreText.text = string.Format("<color=lime>{0}</color>", score);
-    }
-   
+    } 
 }
 

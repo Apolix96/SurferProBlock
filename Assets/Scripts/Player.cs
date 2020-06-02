@@ -1,34 +1,20 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.VFX;
 
 public class Player : MonoBehaviour
 {
-
     private float speed = 0.1f;
-    private float Pspeed = 16f;
-    private float hyi;
+    private float PlayerSpeed = 16f;
     private int DiamondsCount;
+    public bool finish = false;
 
     public GameObject FinishPanel;
-
-    private GameObject Sphere;
-    private GameObject player;
-    private GameObject MainCube;
+    public GameObject Hero;
+    public GameObject player;
     private GameObject Bonus;
-    private BoxCollider BoxCollider;
-
-    [SerializeField] GameObject fireworks;
-
-
-
+    
   
-    public bool finish = false;
     private void movementPlayer()
     {
         var aMovement = Input.GetAxis("Horizontal");
@@ -36,17 +22,10 @@ public class Player : MonoBehaviour
         transform.Translate(aMovement * speed, 0, dMovement * speed);
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         GameObject[] Diamonds = GameObject.FindGameObjectsWithTag("Diamond");
-      
         DiamondsCount = Diamonds.Length;
-        player = GameObject.Find("Player");
-        Sphere = GameObject.Find("Sphere");
-        MainCube = GameObject.Find("MainCube");
-        BoxCollider = player.GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -67,31 +46,20 @@ public class Player : MonoBehaviour
                 {
                     player.transform.Translate(Vector3.right * 5 * Time.deltaTime);
                 }
-
             }
 
             if (player.transform.childCount <5)
             {
-                Camera.main.transform.parent = null;
-                Destroy(gameObject);
                 SceneManager.LoadScene("SampleScene");
             }
             movementPlayer();
             MovePlayerStraight();
-        }
-        else
-        {
-            
-            player.transform.rotation = Quaternion.Euler(player.transform.rotation.x, hyi, player.transform.rotation.z);
-            hyi -= 1;
-
-        }
-       
+        }      
     }
 
     private void MovePlayerStraight()
     {
-        transform.Translate(Vector3.forward * (Pspeed) * Time.deltaTime);
+        transform.Translate(Vector3.forward * (PlayerSpeed) * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision collisin)
     {
@@ -99,43 +67,35 @@ public class Player : MonoBehaviour
         {
             Bonus = collisin.gameObject;
             Bonus.transform.parent = player.transform;
-            Bonus.transform.position = Sphere.transform.position;
-            //Sphere.transform.position = new Vector3(Sphere.transform.position.x, Sphere.transform.position.y, Sphere.transform.position.z);
+            Bonus.transform.position = Hero.transform.position;
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        var tagTrigger = "Finish";
-        var tagTriggerFireForks = "Winner";
-
-        if(other.gameObject.tag == tagTriggerFireForks)
-        {
-            fireworks.SetActive(true);
-            
-        }
-        if (other.gameObject.tag == tagTrigger)
+        if (other.gameObject.CompareTag("Finish"))
         {
             finish = true;
             FinishPanel.SetActive(true);
-            var Diamondd=GetComponent<GetDiamonds>();
-            if(Diamondd.score <=DiamondsCount * 50 / 100)
+            var Finish = GetComponent<GetDiamonds>();
+            int Stars = 0;
+            if (Finish.score <= DiamondsCount * 50 / 100)
             {
-                FinishPanel.transform.GetChild(0).gameObject.SetActive(true);
+                Stars++;
             }
-            else if(Diamondd.score  > DiamondsCount * 50 / 100)
+            else if (Finish.score > DiamondsCount * 50 / 100)
             {
-                FinishPanel.transform.GetChild(0).gameObject.SetActive(true);
-                FinishPanel.transform.GetChild(1).gameObject.SetActive(true);
+                Stars++;
             }
-            else if(Diamondd.score > DiamondsCount * 85 / 100)
+            else if (Finish.score > DiamondsCount * 85 / 100)
             {
-                FinishPanel.transform.GetChild(0).gameObject.SetActive(true);
-                FinishPanel.transform.GetChild(1).gameObject.SetActive(true);
-                FinishPanel.transform.GetChild(2).gameObject.SetActive(true);
+                Stars++;
             }
-            
-            //SceneManager.LoadScene("mainmenu/MainMenu");
+            for(int i=0;i<Stars;i++)
+            {
+                FinishPanel.transform.GetChild(i).gameObject.SetActive(true);
+            }         
         }
+
         var groundTrigger = "Ground";
         if(other.gameObject.tag == groundTrigger)
         {
@@ -150,7 +110,4 @@ public class Player : MonoBehaviour
             gameObject.transform.DORotate(new Vector3(0, 0, 0), 1f);  
         }
     }
-    
-  
-
 }

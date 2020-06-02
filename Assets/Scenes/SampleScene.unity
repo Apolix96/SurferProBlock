@@ -4016,12 +4016,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9393cc54334f1344788dcc852463f357, type: 3}
---- !u!1 &406934591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1890273957906446990, guid: 3ab00f5693e6feb49925b15321a2cd90,
-    type: 3}
-  m_PrefabInstance: {fileID: 1859087274}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &410995060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4659,7 +4653,7 @@ GameObject:
   - component: {fileID: 441351434}
   - component: {fileID: 441351433}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17846,7 +17840,7 @@ GameObject:
   - component: {fileID: 1621061006}
   - component: {fileID: 1621061005}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Star3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18126,7 +18120,7 @@ GameObject:
   - component: {fileID: 1651181592}
   - component: {fileID: 1651181591}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: FinishPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20417,7 +20411,7 @@ GameObject:
   - component: {fileID: 1857182885}
   - component: {fileID: 1857182884}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DiamondImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20933,7 +20927,7 @@ GameObject:
   - component: {fileID: 1895199933}
   - component: {fileID: 1895199932}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21677,7 +21671,7 @@ GameObject:
   - component: {fileID: 1943074738}
   - component: {fileID: 1943074737}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Star1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22916,7 +22910,7 @@ GameObject:
   - component: {fileID: 2068300919}
   - component: {fileID: 2068300918}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Star2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23735,7 +23729,7 @@ GameObject:
   - component: {fileID: 2130953539}
   - component: {fileID: 2130953538}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23812,7 +23806,7 @@ GameObject:
   - component: {fileID: 2131890609}
   - component: {fileID: 2131890608}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24426,7 +24420,7 @@ PrefabInstance:
     - target: {fileID: 2314878129281203402, guid: a3393ab4e2aaa4946823f89848010c1a,
         type: 3}
       propertyPath: m_Name
-      value: Sphere
+      value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 2314878129281494826, guid: a3393ab4e2aaa4946823f89848010c1a,
         type: 3}
@@ -24628,12 +24622,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4827705660954972701, guid: a3393ab4e2aaa4946823f89848010c1a,
+    - target: {fileID: 7423448081644432788, guid: a3393ab4e2aaa4946823f89848010c1a,
         type: 3}
-      propertyPath: fireworks
+      propertyPath: player
       value: 
-      objectReference: {fileID: 406934591}
-    - target: {fileID: 4827705660954972701, guid: a3393ab4e2aaa4946823f89848010c1a,
+      objectReference: {fileID: 184559686}
+    - target: {fileID: 7423448081644432788, guid: a3393ab4e2aaa4946823f89848010c1a,
+        type: 3}
+      propertyPath: Hero
+      value: 
+      objectReference: {fileID: 1253529931}
+    - target: {fileID: 7423448081644432788, guid: a3393ab4e2aaa4946823f89848010c1a,
         type: 3}
       propertyPath: FinishPanel
       value: 
