@@ -20,26 +20,27 @@ public class GetDiamonds : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Diamond")
-        {
-            CreateDiamond();
-            Destroy(other.gameObject);
-            score++;
-            ChangeTime();
+        if (other.gameObject.CompareTag("Diamond"))
+        {                
+            ChangeScore(other);
         }
     }
-    public void StartScore()
+    //public void StartScore()
+    //{
+    //    var s = DOTween.Sequence();
+    //    var count = 10;
+    //    var delay = 1f;
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        s.InsertCallback(i * delay, ChangeTime);
+    //    }
+    //}
+    void ChangeScore(Collider other)
     {
-        var s = DOTween.Sequence();
-        var count = 10;
-        var delay = 1f;
-        for (int i = 0; i < count; i++)
-        {
-            s.InsertCallback(i * delay, ChangeTime);
-        }
-    }
-    void ChangeTime()
-    {
+        CreateDiamond();
+        Destroy(other.gameObject);
+        other.gameObject.tag = "Untagged";
+        score++;
         scoreText.text = string.Format("<color=lime>{0}</color>", score);
     } 
 }

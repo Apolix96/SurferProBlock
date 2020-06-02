@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour
     private GameObject Bonus;
     
   
-    private void movementPlayer()
+    private void MovementPlayer()
     {
         var aMovement = Input.GetAxis("Horizontal");
         var dMovement = Input.GetAxis("Vertical");
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
             {
                 SceneManager.LoadScene("SampleScene");
             }
-            movementPlayer();
+            MovementPlayer();
             MovePlayerStraight();
         }      
     }
@@ -63,7 +64,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collisin)
     {
-        if (collisin.gameObject.tag == "Bonus" && collisin.gameObject.transform.parent != player.transform)
+        if (collisin.gameObject.CompareTag("Bonus") && collisin.gameObject.transform.parent != player.transform)
         {
             Bonus = collisin.gameObject;
             Bonus.transform.parent = player.transform;
@@ -72,11 +73,11 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Finish"))
+        if (other.gameObject.CompareTag("Finish") && finish == false)
         {
+            var Finish = GetComponent<GetDiamonds>();   
             finish = true;
             FinishPanel.SetActive(true);
-            var Finish = GetComponent<GetDiamonds>();
             int Stars = 0;
             if (Finish.score <= DiamondsCount * 50 / 100)
             {
@@ -84,20 +85,20 @@ public class Player : MonoBehaviour
             }
             else if (Finish.score > DiamondsCount * 50 / 100)
             {
-                Stars++;
+                Stars+=2;
             }
             else if (Finish.score > DiamondsCount * 85 / 100)
             {
-                Stars++;
+                Stars+=3;
             }
             for(int i=0;i<Stars;i++)
-            {
+            { 
                 FinishPanel.transform.GetChild(i).gameObject.SetActive(true);
-            }         
+            }
         }
 
         var groundTrigger = "Ground";
-        if(other.gameObject.tag == groundTrigger)
+        if(other.gameObject.CompareTag(groundTrigger))
         {
             SceneManager.LoadScene("SampleScene");
         }
