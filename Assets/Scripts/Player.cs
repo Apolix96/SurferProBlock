@@ -101,14 +101,6 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag(groundTrigger))
         {
             SceneManager.LoadScene("SampleScene");
-        }
-        if (other.gameObject.name == "TurnLeft")
-        {
-            gameObject.transform.DORotate(new Vector3(0, -90, 0), 1f);   
-        }
-        if (other.gameObject.name == "TurnRight")
-        {         
-            gameObject.transform.DORotate(new Vector3(0, 0, 0), 1f);  
-        }
+        }      
     }
 }
